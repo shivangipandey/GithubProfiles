@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Retrofit Github</string>
+    <string name="internet">No internet connection. Please make sure device is connected to the internet</string>
+
+</resources>

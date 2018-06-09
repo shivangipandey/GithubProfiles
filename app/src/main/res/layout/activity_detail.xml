@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="310dp"
+            android:padding="10dp"
+            android:id="@+id/user_image_header"
+            android:fitsSystemWindows="true"
+            android:scaleType="fitXY"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/header"
+            android:layout_marginLeft="10dp"
+            android:text="Username"
+            android:textAlignment="center"
+            android:layout_marginTop="10dp"
+            android:textStyle="bold"
+            android:textSize="25dp"
+            android:layout_below="@+id/user_image_header"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/username"
+            android:layout_marginLeft="10dp"
+            android:gravity="center"
+            android:text="name"
+            android:layout_marginTop="3dp"
+            android:textSize="20sp"
+            android:layout_below="@id/header"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/githublink"
+            android:layout_marginLeft="10dp"
+            android:text="Github profile link"
+            android:textAlignment="center"
+            android:layout_marginTop="10dp"
+            android:textStyle="bold"
+            android:textSize="25dp"
+            android:layout_below="@id/username"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/link"
+            android:layout_marginLeft="10dp"
+            android:text="Link"
+            android:gravity="center"
+            android:layout_marginTop="3dp"
+            android:textSize="20sp"
+            android:layout_below="@id/githublink"/>
+
+    </RelativeLayout>
+</ScrollView>
