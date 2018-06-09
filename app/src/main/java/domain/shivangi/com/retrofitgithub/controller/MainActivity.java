@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
     private User item;
     ProgressDialog pd;
     private SwipeRefreshLayout swipeRefreshLayout;
-    String username = "shivangi";
+
     List<User> items;
     ItemAdapter itemAdapter;
     ImageButton search_btn;
@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        initViews("Fetching Github Users...");
+        initViews("Fetching Github Users...","");
         name = (EditText)findViewById(R.id.name);
         search_btn = (ImageButton)findViewById(R.id.search_btn);
 
@@ -67,15 +67,14 @@ public class MainActivity extends AppCompatActivity {
                 if(n.isEmpty())
                     Toast.makeText(MainActivity.this, "Enter username to search", Toast.LENGTH_SHORT).show();
                 else {
-                    initViews("Getting "+username);
-                    loadJSON(n);
+                    initViews("Getting "+n,n);
                 }
             }
         });
 
     }
 
-    private void initViews(String text){
+    private void initViews(String text, String n){
         pd = new ProgressDialog(this);
         pd.setMessage(text);
         pd.setCancelable(false);
@@ -83,7 +82,10 @@ public class MainActivity extends AppCompatActivity {
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         recyclerView.smoothScrollToPosition(0);
-        loadJSON();
+        if(n.isEmpty())
+            loadJSON();
+        else
+            loadJSON(n);
 
     }
 
@@ -99,13 +101,14 @@ public class MainActivity extends AppCompatActivity {
             call.enqueue(new Callback<List<User>>() {
                 @Override
                 public void onResponse(Call<List<User>> call, Response<List<User>> response) {
-                    Toast.makeText(MainActivity.this, "Showing top 100 results", Toast.LENGTH_SHORT).show();
                     items = response.body();
+                    int size = items.size();
                     itemAdapter = new ItemAdapter(getApplicationContext(), items);
                     recyclerView.setAdapter(itemAdapter);
                     recyclerView.smoothScrollToPosition(0);
                     swipeRefreshLayout.setRefreshing(false);
                     pd.hide();
+                    Toast.makeText(MainActivity.this, "Showing top 100 results", Toast.LENGTH_SHORT).show();
                 }
 
                 @Override
